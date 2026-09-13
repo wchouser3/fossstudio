@@ -178,6 +178,9 @@ process.on("unhandledRejection", (err) => {
 // app directly. BIND_HOST widens that for setups with no local proxy
 // (e.g. a Tailscale address, or 0.0.0.0 behind a proxy in another
 // container) - never expose the app port itself to the open internet.
-server.listen(config.httpPort, config.bindHost, () => {
-  console.log(`FOSS Studio listening on ${config.bindHost}:${config.httpPort}`);
+
+
+server.listen(config.httpPort, "0.0.0.0", () => {
+  console.log(`FOSS Studio listening on 0.0.0.0:${config.httpPort}`);
 });
+
